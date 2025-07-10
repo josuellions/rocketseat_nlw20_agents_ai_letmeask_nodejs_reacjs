@@ -4,7 +4,7 @@ import { database } from "../../../infra/database.ts";
 
 export const getRoomsRoute: FastifyPluginCallbackZod = (app) => {
   app.get("/rooms", async () => {
-    const resutl = await database
+    const result = await database
       .select({
         id: schema.rooms.id,
         name: schema.rooms.name,
@@ -12,6 +12,6 @@ export const getRoomsRoute: FastifyPluginCallbackZod = (app) => {
       .from(schema.rooms)
       .orderBy(schema.rooms.createdAt);
 
-    return { resutl };
+    return { result };
   });
 };
