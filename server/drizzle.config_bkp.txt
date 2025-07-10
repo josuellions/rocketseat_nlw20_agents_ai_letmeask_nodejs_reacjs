@@ -1,0 +1,38 @@
+import path from "node:path";
+import dotenv from "dotenv";
+import dotenvExpand from "dotenv-expand";
+import { defineConfig } from "drizzle-kit";
+
+// Garanta que o .env.development seja carregado ANTES de tudo
+const envPath = path.resolve(__dirname, "..", "..", ".env.development");
+dotenvExpand.expand(dotenv.config({ path: envPath }));
+// function teste() {
+//   console.log(">>DRIZZLE");
+//   console.log(process.env.NODE_ENV);
+//   console.log(env.NODE_ENV);
+// }
+
+// teste();
+
+console.log(">>DRIZZLE");
+console.log(envPath);
+console.log(process.env.DATABASE_URL);
+console.log(process.env.NODE_ENV);
+
+export default defineConfig({
+  dialect: "postgresql",
+  casing: "snake_case",
+  schema: "./infra/database/schema/**.ts",
+  out: "./infra/database/migrations",
+  dbCredentials: {
+    url: String(process.env.DATABASE_URL),
+  },
+  // dbCredentials: {
+  //   connectionString: env.DATABASE_URL, // ou usar host/user/port etc.
+  // },
+  // dbCredentials: {
+  //   url: String(
+  //     "postgres://postgres:docker@localhost:5432/postgres-dev-letmeask-agents"
+  //   ),
+  // },
+});

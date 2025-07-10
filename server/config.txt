@@ -1,0 +1,9 @@
+import dotenv from 'dotenv';
+import dotenvExpand from 'dotenv-expand';
+
+// Carrega e expande as variáveis
+const myEnv = dotenv.config();
+dotenvExpand.expand(myEnv);
+
+// Testa o resultado
+console.log('DATABASE_URL:', process.env.DATABASE_URL);
