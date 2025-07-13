@@ -1,56 +1,16 @@
-import { useQuery } from '@tanstack/react-query';
-import { Loader } from 'lucide-react';
-import { Link } from 'react-router-dom';
-
-interface Props {
-  result: {
-    id: string;
-    name: string;
-  }[];
-}
-
-type GetRoomsAPIResponse = Props;
+import { RoomCreateForm } from '@/components/room-create-form';
+import { RoomList } from '@/components/room-list';
 
 export function RoomCreate() {
-  const { data, isLoading } = useQuery({
-    queryKey: ['get-rooms'],
-    queryFn: async () => {
-      const response = await fetch('http://localhost:3333/rooms');
-
-      const result: GetRoomsAPIResponse = await response.json();
-
-      return result;
-    },
-  });
-
   return (
-    <div>
-      <h1>Create Rooms</h1>
-      <br />
-      <Link className="underline" to={'/room'}>
-        Acessar sala
-      </Link>
-
-      <br />
-
-      {isLoading && <Loader className="size-10 animate-spin" />}
-
-      {/*
-           <div>   
-        {data && (
-           <pre>{JSON.stringify(data, null, 2)}</pre>
-          
-        )} 
-         /div>
-         */}
-      <div className="flex flex-col gap-1">
-        {data?.result.map((room) => {
-          return (
-            <Link className="underline" key={room.id} to={`/room/${room.id}`}>
-              {room.name}
-            </Link>
-          );
-        })}
+    <div className="min-h-screen flex-col px-4 py-8">
+      <div className="mx-auto max-w-4xl">
+        <div className="grid grid-cols-2 items-start gap-8">
+          <h1 className="flex w-full items-center justify-center">Salas</h1>
+          <div />
+          <RoomCreateForm />
+          <RoomList />
+        </div>
       </div>
     </div>
   );
