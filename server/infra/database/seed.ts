@@ -12,6 +12,9 @@ await seed(database, schema).refine((faker) => {
         name: faker.companyName(),
         description: faker.loremIpsum(),
       },
+      with: {
+        questions: 5,
+      },
     },
   };
 });

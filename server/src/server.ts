@@ -7,7 +7,9 @@ import {
 } from "fastify-type-provider-zod";
 
 import { getRoomsRoute } from "./http/routes/get-rooms.ts";
-
+import { getRoomsQuestionsRoute } from "./http/routes/get-rooms-questions.ts";
+import { postRoomsRoute } from "./http/routes/post-rooms.ts";
+import { postRoomsQuestionsRoute } from "./http/routes/post-rooms-questions.ts";
 import { env } from "./types/env.ts";
 
 const app = fastify().withTypeProvider<ZodTypeProvider>();
@@ -25,6 +27,9 @@ app.get("/status", (_, res) => {
 });
 
 app.register(getRoomsRoute);
+app.register(postRoomsRoute);
+app.register(getRoomsQuestionsRoute);
+app.register(postRoomsQuestionsRoute);
 
 app.listen({ port: env.PORT }).then(() => {
   // biome-ignore lint/suspicious/noConsole: only used in dev
