@@ -59,7 +59,7 @@ export function RoomList() {
           <Loader className="flex size-10 w-full animate-spin items-center justify-center" />
         )}
 
-        {data?.result.map((room) => {
+        {data?.map((room) => {
           return (
             <Link
               className="flex items-center justify-between rounded-lg border p-3 hover:bg-accent/50"

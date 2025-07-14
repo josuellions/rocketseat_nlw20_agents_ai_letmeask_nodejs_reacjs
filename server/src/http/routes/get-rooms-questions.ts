@@ -33,7 +33,7 @@ export const getRoomsQuestionsRoute: FastifyPluginCallbackZod = (app) => {
         throw new Error("Failed to list questions.");
       }
 
-      return replay.status(200).send({ result });
+      return replay.status(200).send(result);
     }
   );
 };

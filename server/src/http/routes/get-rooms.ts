@@ -18,6 +18,6 @@ export const getRoomsRoute: FastifyPluginCallbackZod = (app) => {
       .groupBy(schema.rooms.id, schema.rooms.name)
       .orderBy(schema.rooms.createdAt);
 
-    return { result };
+    return result;
   });
 };

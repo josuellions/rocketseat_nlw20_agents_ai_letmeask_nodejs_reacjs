@@ -38,11 +38,11 @@ GET {{baseUrl}}/rooms/{{roomId}}/questions
 # POST rooms
 # @name createRoomQuestion
 #POST {{baseUrl}}/rooms/{{createRoomId}}/questions
-POST http://localhost:3333/rooms/6f05315b-1442-4bfa-af46-cf39d951f59e/questions 
+POST http://localhost:3333/rooms/a6732832-9805-4da4-f281-fa7773aff23b/questions 
 Content-Type: application/json
 
 {
-  "question": "Essa é uma questão de teste criada no http-client"
+  "question": "o que é projeto"
 }
 
 
