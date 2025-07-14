@@ -8,6 +8,20 @@
       "when": 1752122937289,
       "tag": "0000_violet_snowbird",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1752424521119,
+      "tag": "0001_easy_swordsman",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1752469905836,
+      "tag": "0002_lonely_deathstrike",
+      "breakpoints": true
     }
   ]
 }

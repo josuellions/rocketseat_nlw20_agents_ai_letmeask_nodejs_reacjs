@@ -2,9 +2,49 @@
 @baseUrl = http://localhost:3333
 
 # GET Health check (Status)
+# @name getStatus
 GET {{baseUrl}}/status
 
 ###
 
 # GET rooms
+# @name getRoom
 GET {{baseUrl}}/rooms
+
+###
+
+# POST rooms
+# @name createRoom
+POST {{baseUrl}}/rooms
+Content-Type: application/json
+
+{
+  "name": "Sala create teste http-client",
+  "description": "Essa é uma sala de teste no http-client"
+}
+
+###
+
+@roomId = {{getRoom.response.body.$.[0].id}}
+@createRoomId = {{createRoom.response.body.$.roomId}}
+###
+
+# GET rooms
+# @name getRoomQuestions
+GET {{baseUrl}}/rooms/{{roomId}}/questions
+
+###
+
+# POST rooms
+# @name createRoomQuestion
+#POST {{baseUrl}}/rooms/{{createRoomId}}/questions
+POST http://localhost:3333/rooms/a6732832-9805-4da4-f281-fa7773aff23b/questions 
+Content-Type: application/json
+
+{
+  "question": "o que é projeto"
+}
+
+
+# curl -s -X GET 'http://localhost:3333/rooms/e06fd7f6-2090-4105-f0db-55807961e7b0/questions' | jq
+
